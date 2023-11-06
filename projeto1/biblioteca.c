@@ -92,3 +92,20 @@ void carregarTarefas(Tarefa* tarefas, int* numTarefas, const char* nomeArquivo) 
 //A função carregarTarefas recebe o nome de um arquivo e carrega as tarefas desse arquivo para o array tarefas.
 
 //Essas funções são implementadas de acordo com o cabeçalho (Biblioteca.h).
+
+void alterarTarefa(Tarefa* tarefas, int posicao) {
+    if (posicao < 0 || posicao >= MAX_TAREFAS) {
+        printf("Posição inválida.\n");
+        return;
+    }
+
+    printf("Digite a prioridade da tarefa (0-10): ");
+    scanf("%d", &(tarefas[posicao].prioridade));
+
+    printf("Digite a descrição da tarefa (até %d letras): ", MAX_DESCRICAO);
+    scanf(" %[^\n]", tarefas[posicao].descricao);
+
+    printf("Digite a categoria da tarefa (até %d letras): ", MAX_CATEGORIA);
+    scanf(" %[^\n]", tarefas[posicao].categoria);
+}
+//Altera os dados de uma tarefa.
