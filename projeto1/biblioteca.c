@@ -109,3 +109,22 @@ void alterarTarefa(Tarefa* tarefas, int posicao) {
 }
 //Altera os dados de uma tarefa.
 
+void filtrarTarefasPorPrioridade(const Tarefa* tarefas, int numTarefas) {
+    int prioridadeEscolhida;
+    printf("Digite a prioridade que deseja filtrar (0-10): ");
+    scanf("%d", &prioridadeEscolhida);
+
+    printf("Tarefas com prioridade %d:\n", prioridadeEscolhida);
+    printf("------------------------------\n");
+
+    for (int i = 0; i < numTarefas; i++) {
+        if (tarefas[i].prioridade == prioridadeEscolhida) {
+            printf("Tarefa %d:\n", i + 1);
+            printf("Prioridade: %d\n", tarefas[i].prioridade);
+            printf("Descrição: %s\n", tarefas[i].descricao);
+            printf("Categoria: %s\n", tarefas[i].categoria);
+            printf("------------------------------\n");
+        }
+    }
+}
+//Exibe as tarefas com a prioridade feita pelo usuario.
