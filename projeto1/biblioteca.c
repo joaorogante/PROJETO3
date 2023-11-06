@@ -179,5 +179,28 @@ void filtrarTarefasPorCategoria(Tarefa* tarefas, int numTarefas) {
     }
 }
 // Exibe as tarefas da categoria escolhida pelo usuário.
+void filtrarTarefasPorPrioridadeECategoria(Tarefa* tarefas, int numTarefas) {
+    int prioridadeEscolhida;
+    char categoriaEscolhida[MAX_CATEGORIA];
 
+    printf("Digite a prioridade que deseja filtrar (0-10): ");
+    scanf("%d", &prioridadeEscolhida);
+
+    printf("Digite a categoria que deseja filtrar: ");
+    scanf(" %[^\n]", categoriaEscolhida);
+
+    printf("Tarefas com prioridade %d e da categoria %s:\n", prioridadeEscolhida, categoriaEscolhida);
+    printf("------------------------------\n");
+
+    for (int i = 0; i < numTarefas; i++) {
+        if (tarefas[i].prioridade == prioridadeEscolhida && strcmp(tarefas[i].categoria, categoriaEscolhida) == 0) {
+            printf("Tarefa %d:\n", i + 1);
+            printf("Prioridade: %d\n", tarefas[i].prioridade);
+            printf("Descrição: %s\n", tarefas[i].descricao);
+            printf("Categoria: %s\n", tarefas[i].categoria);
+            printf("------------------------------\n");
+        }
+    }
+}
+//Filtra tarefas por prioridade e categoria.
 
