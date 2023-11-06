@@ -203,4 +203,19 @@ void filtrarTarefasPorPrioridadeECategoria(Tarefa* tarefas, int numTarefas) {
     }
 }
 //Filtra tarefas por prioridade e categoria.
+void exportarTarefasPorPrioridade(const Tarefa* tarefa, int numTarefa, int prioridade, const char* nomeArquivo) {
+    FILE* arquivo = fopen(nomeArquivo, "w");
+
+    for(int i = 0; i < numTarefa; i++) {
+        if(tarefa[i].prioridade == prioridade) {
+           fprintf(arquivo, "%d,%s,%s,%s\n", tarefa[i].prioridade,
+                   tarefa[i].categoria,
+                   tarefa[i].estado,
+                   tarefa[i].descricao);
+       }
+    }
+
+    fclose(arquivo);
+}
+// Exporta as tarefas com a prioridade escolhida
 
