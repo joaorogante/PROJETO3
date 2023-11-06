@@ -218,4 +218,29 @@ void exportarTarefasPorPrioridade(const Tarefa* tarefa, int numTarefa, int prior
     fclose(arquivo);
 }
 // Exporta as tarefas com a prioridade escolhida
+void exportarTarefasPorCategoria(Tarefa* tarefa, int numTarefa, const char* categoria, const char* nomeArquivo) {
+    FILE* arquivo = fopen(nomeArquivo, "w");
 
+    
+    for (int i = 0; i < numTarefa - 1; i++) {
+        for (int j = i + 1; j < numTarefa; j++) {
+            if (tarefa[i].prioridade < tarefa[j].prioridade) {
+                Tarefa aux = tarefa[i];
+                tarefa[i] = tarefa[j];
+                tarefa[j] = aux;
+            }
+        }
+    }
+
+    for(int i = 0; i < numTarefa; i++) {
+        if(strcmp(tarefa[i].categoria, categoria) == 0) {
+           fprintf(arquivo, "%d,%s,%s,%s\n", tarefa[i].prioridade,
+                   tarefa[i].categoria,
+                   tarefa[i].estado,
+                   tarefa[i].descricao);
+       }
+    }
+
+    fclose(arquivo);
+}
+// Exporta as tarefas da categoria escolhida para um arquivo.
